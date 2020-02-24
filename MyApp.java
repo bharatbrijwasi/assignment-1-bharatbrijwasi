@@ -16,7 +16,7 @@ class Person
 		this.Email_id = null;
 	}
 
-	public void setDetails()
+	public void setDetails() //setDetails class for getting new value from the user
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter First Name: ");
@@ -45,7 +45,7 @@ class Node
 }
 
 
-class Operation
+class Operation  //this class contain all operation such as add new contacts, delete contact, search contach.
 {
 	Node head;
 
@@ -54,7 +54,7 @@ class Operation
 		this.head = null;
 	}
 
-	public boolean isListEmpty()
+	public boolean isListEmpty()   
 	{
 		return (head == null);
 	}
@@ -106,7 +106,7 @@ class Operation
 		}
 	}
 
-	public void countLink()
+	public void countLink() //method for count total records in list and formatting list by first name and last name
 	{
 		if(isListEmpty())
 		{
@@ -126,7 +126,7 @@ class Operation
 		}
 	}
 
-	public void deleteNumber()
+	public void deleteNumber()  //method for delete records from list
 	{
 
 		Node temp = head;
@@ -135,7 +135,7 @@ class Operation
 		System.out.print("Press the Number against the Contact to delete it: ");
 		int choice = sc.nextInt();
 
-		if(choice == 1)
+		if(choice == 1) //if it is true, means list has only one element we delete that element
 		{
 			temp = head.next;
 			head = null;
@@ -151,10 +151,10 @@ class Operation
 			}
 			prev.next = temp.next;
 		}
-		System.out.println("Record is deleted...");
+		System.out.println("Record is deleted..."); //leave message for successfull deletion
 	}
 
-	public void searchContact()
+	public void searchContact() //method for seaching records from the list
 	{
 		System.out.println("you could search for a Contact from thier First Name: ");
 		Scanner sc = new Scanner(System.in);
@@ -196,46 +196,46 @@ class MyApp
 		System.out.println("press 5 to exit program");
 		int choice = sc.nextInt();
 
-			switch(choice)
+		switch(choice)
+		{
+			case 1:
+			{	  
+				System.out.println("You have chosen to add a new Contact\n==============================");
+				System.out.print("Enter How many Number you want add to list: ");
+				int n = sc.nextInt();
+				for(int i = 1; i <= n; i++)
+				{
+					System.out.println("Enter details of Person.............. "+ i+ "=========================");
+					op.insertNewRecord();
+				}
+
+			}
+			case 2:
+			{ 
+				System.out.println("===============================\n----Here are all your Contact----");
+				System.out.println("----------*----------*----------*----------");
+				op.getDetails();
+				break;	
+			}
+
+			case 3:
+			{ 
+				op.countLink();
+				op.deleteNumber();
+				break;
+			}
+			case 4:
 			{
-				case 1:
-				{	  
-					System.out.println("You have chosen to add a new Contact\n==============================");
-					System.out.print("Enter How many Number you want add to list: ");
-					int n = sc.nextInt();
-					for(int i = 1; i <= n; i++)
-					{
-						System.out.println("Enter details of Person.............. "+ i+ "=========================");
-						op.insertNewRecord();
-					}
-
-				}
-				case 2:
-				{ 
-					System.out.println("===============================\n----Here are all your Contact----");
-					System.out.println("----------*----------*----------*----------");
-					op.getDetails();
-					break;	
-				}
-
-				case 3:
-				{ 
-					op.countLink();
-					op.deleteNumber();
-					break;
-				}
-				case 4:
-				{
-					System.out.println("Here are all your Contacts\n=====================");
-					op.countLink();
-					op.searchContact();
-					break;
-				}
-				case 5:
-				{
-					System.out.println("You Exit from program...!");
-					System.exit(0);
-				}
-			}		
+				System.out.println("Here are all your Contacts\n=====================");
+				op.countLink();
+				op.searchContact();
+				break;
+			}
+			case 5:
+			{
+				System.out.println("You Exit from program...!");
+				System.exit(0);
+			}
+		}		
 	}
 }
