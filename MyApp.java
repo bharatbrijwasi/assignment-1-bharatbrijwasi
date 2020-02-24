@@ -16,7 +16,7 @@ class Person
 		this.Email_id = null;
 	}
 
-	public void setDetails() //setDetails class for getting new value from the user
+	public void setDetails() //setDetails method for getting new value from the user
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter First Name: ");
